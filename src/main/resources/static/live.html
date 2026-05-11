@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostureIQ - Live Analysis</title>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="/tailwind-config.js"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .heatmap-glow {
+            filter: blur(14px);
+        }
+        .chart-mask {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+        body { min-height: max(884px, 100dvh); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center w-full px-4 h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxjzijF8AIENB375NN2z6wrFGmPUm0LoIauyxIXFDKeTf2zsAXMc5xShhhyFgx5UZOCp4DSNAM_yPcl-Fvi7hUYrk8mLB2FVh2DB1theDs5LJMqWQhKUaRnk9Vn5JYuQuH8ZG_5fXnGM2TV4AFR1VDvWfQlzMgJa0oonVuiXLyZ7SVxdECW72PhTMwVQ2pTEPG50W87_wjMDzcbvU010t-3T7nvvoIxEGHjgcX7Kti0R4Jepkr509RbN2AVSQj1fYai9jHrTi7B9OE"/>
+</div>
+<h1 class="font-['Lexend'] font-bold text-lg text-[#1A237E] dark:text-cyan-400">PostureIQ</h1>
+</div>
+<a href="/device.html" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:opacity-70">
+<span class="material-symbols-outlined text-slate-500">settings_bluetooth</span>
+</a>
+</header>
+<main class="pt-20 pb-32 px-gutter max-w-5xl mx-auto space-y-md">
+<!-- Live Status Feedback -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_4px_20px_rgba(26,35,126,0.05)] border-l-4 border-error">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-md text-label-md text-error uppercase tracking-wider mb-xs block">실시간 상태</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">불균형 감지</h2>
+</div>
+<div class="bg-error-container text-on-error-container px-sm py-xs rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-label-md text-label-md">Warning</span>
+</div>
+</div>
+<p class="mt-sm font-body-md text-body-md text-on-surface-variant bg-surface-container-low p-sm rounded-lg border border-outline-variant/30">
+                "왼발에 체중을 조금 더 실어주세요. 현재 오른쪽으로 12% 편향되어 있습니다."
+            </p>
+</section>
+<!-- Main Analysis Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Heatmap Visualization -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-xl p-md shadow-[0px_4px_20px_rgba(26,35,126,0.05)] relative overflow-hidden h-[450px] flex flex-col">
+<h3 class="font-label-lg text-label-lg text-primary mb-md">발바닥 압력 히트맵 (Live Heatmap)</h3>
+<div class="flex-1 relative flex justify-center items-center">
+<!-- Technical Grid Background -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#1A237E 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="flex gap-xl relative z-10">
+<!-- Left Foot -->
+<div class="relative w-32 h-64 border-2 border-outline-variant/20 rounded-full opacity-80">
+<div class="absolute top-4 left-4 w-12 h-16 bg-secondary-container/60 heatmap-glow rounded-full"></div>
+<div class="absolute bottom-8 left-8 w-16 h-20 bg-secondary/40 heatmap-glow rounded-full"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-data-viz text-data-viz text-outline">LEFT 44%</span>
+</div>
+<!-- Right Foot -->
+<div class="relative w-32 h-64 border-2 border-outline-variant/20 rounded-full opacity-80">
+<div class="absolute top-4 right-4 w-16 h-20 bg-secondary/80 heatmap-glow rounded-full"></div>
+<div class="absolute bottom-8 right-6 w-20 h-24 bg-secondary-container heatmap-glow rounded-full"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-data-viz text-data-viz text-primary font-bold">RIGHT 56%</span>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="mt-md flex justify-between items-center px-sm">
+<span class="font-label-md text-label-md text-outline">낮은 압력</span>
+<div class="h-2 flex-1 mx-md rounded-full" style="background: linear-gradient(to right, #e0e0ff, #58e6ff, #006876);"></div>
+<span class="font-label-md text-label-md text-outline">높은 압력</span>
+</div>
+</div>
+<!-- Side Metrics & Mini Charts -->
+<div class="md:col-span-5 space-y-md">
+<!-- Vertical Force Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_4px_20px_rgba(26,35,126,0.05)]">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-lg text-label-lg text-on-surface">수직 하중 (Vertical Force)</span>
+<span class="font-headline-md text-headline-md text-secondary">72.4 kg</span>
+</div>
+<div class="h-16 w-full chart-mask relative overflow-hidden bg-surface-container-low rounded-lg">
+<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 40">
+<path d="M0 30 Q 10 25 20 32 T 40 28 T 60 35 T 80 25 T 100 30" fill="none" stroke="#006876" stroke-width="2"></path>
+</svg>
+</div>
+<p class="font-data-viz text-data-viz text-outline mt-xs text-right uppercase">Real-time 10s Window</p>
+</div>
+<!-- Shear Stress Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_4px_20px_rgba(26,35,126,0.05)]">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-lg text-label-lg text-on-surface">전단 응력 (Shear Stress)</span>
+<span class="font-headline-md text-headline-md text-error">4.2 N/cm²</span>
+</div>
+<div class="h-16 w-full chart-mask relative overflow-hidden bg-surface-container-low rounded-lg">
+<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 40">
+<path d="M0 20 Q 20 10 40 25 T 80 5 T 100 20" fill="none" stroke="#ba1a1a" stroke-width="2"></path>
+</svg>
+</div>
+<p class="font-data-viz text-data-viz text-outline mt-xs text-right uppercase">Instability Index</p>
+</div>
+<!-- Session Controls -->
+<div class="pt-sm">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-headline-md flex items-center justify-center gap-sm shadow-lg hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stop_circle</span>
+                        분석 중단 (Stop Recording)
+                    </button>
+<p class="text-center font-label-md text-label-md text-outline mt-sm">세션 진행 시간: 12:45</p>
+<a href="/precision.html" class="mt-sm w-full h-12 border border-primary-container text-primary-container rounded-xl font-label-lg flex items-center justify-center gap-2 hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined">sensors</span>
+<span>정밀 분석 모드</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Technical Specs -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<div class="bg-surface-container-high/50 p-sm rounded-lg border border-outline-variant/20">
+<span class="font-label-md text-label-md text-on-surface-variant block">Sampling Rate</span>
+<span class="font-headline-md text-headline-md text-primary">120Hz</span>
+</div>
+<div class="bg-surface-container-high/50 p-sm rounded-lg border border-outline-variant/20">
+<span class="font-label-md text-label-md text-on-surface-variant block">Latency</span>
+<span class="font-headline-md text-headline-md text-secondary">8ms</span>
+</div>
+<div class="bg-surface-container-high/50 p-sm rounded-lg border border-outline-variant/20">
+<span class="font-label-md text-label-md text-on-surface-variant block">Sensor Status</span>
+<span class="font-headline-md text-headline-md text-secondary">Active</span>
+</div>
+<div class="bg-surface-container-high/50 p-sm rounded-lg border border-outline-variant/20">
+<span class="font-label-md text-label-md text-on-surface-variant block">Battery</span>
+<span class="font-headline-md text-headline-md text-primary">82%</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-slate-900 flex justify-around items-center px-4 h-20 pb-safe border-t border-slate-200 dark:border-slate-800 shadow-[0px_-4px_20px_rgba(26,35,126,0.05)]">
+<a href="/index.html" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-[#1A237E] dark:hover:text-cyan-400 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-['Lexend'] text-[10px] font-medium tracking-wide uppercase">Dashboard</span>
+</a>
+<a href="/live.html" class="flex flex-col items-center justify-center bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-xl px-3 py-1.5 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Lexend'] text-[10px] font-medium tracking-wide uppercase">Live</span>
+</a>
+<a href="/reports.html" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-[#1A237E] dark:hover:text-cyan-400 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">insert_chart</span>
+<span class="font-['Lexend'] text-[10px] font-medium tracking-wide uppercase">Reports</span>
+</a>
+<a href="/device.html" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-[#1A237E] dark:hover:text-cyan-400 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">settings_input_component</span>
+<span class="font-['Lexend'] text-[10px] font-medium tracking-wide uppercase">Device</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,15 @@
+# Render.com Infrastructure-as-Code 정의
+# 이 파일이 repo 에 있으면 Render 가 자동으로 읽어서 서비스를 구성함
+# 참고: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: postureiq
+    runtime: docker
+    plan: free
+    region: singapore       # 한국에서 가장 가까운 무료 region
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true        # GitHub push 시 자동 재배포
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod         # dev 프로파일 비활성화 (file: location override 안 씀)
