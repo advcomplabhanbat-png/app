@@ -52,36 +52,43 @@ $env:SPRING_PROFILES_ACTIVE = "dev"
    - SDK Tools: **Android SDK Build-Tools**, **Android SDK Platform-Tools** 체크
 4. `ANDROID_HOME` 환경변수 설정 (보통 `C:\Users\<user>\AppData\Local\Android\Sdk`)
 
-### 매번 빌드 시
+### 🔄 매번 코드 수정 후 → 새 APK 만드는 워크플로우 (A 방식)
 
 ```powershell
-# 1. 웹 변경사항 → android/ 폴더로 동기화
-npm.cmd run sync
-
-# 2. Android Studio에서 열기 (권장 — 디버깅/실행 편함)
-npm.cmd run android:open
-
-# 또는 명령줄로 바로 debug APK 빌드
-npm.cmd run android:build
+# 캡스톤 루트에서 실행 — sync + 빌드 한 번에
+cd C:\Users\user\projects\postureiq
+npm.cmd run apk
 ```
 
-#### APK 위치
+이 한 줄이 자동으로 다음을 수행합니다:
+1. `src/main/resources/static/`의 HTML 변경사항을 `android/app/src/main/assets/public/`로 동기화
+2. Gradle로 debug APK 빌드
 
-빌드 성공 후:
+처음엔 ~5분, 이후엔 ~30초~1분 소요.
+
+#### 빌드 후 APK 위치
 
 ```
-android/app/build/outputs/apk/debug/app-debug.apk
+C:\Users\user\projects\postureiq\android\app\build\outputs\apk\debug\app-debug.apk
 ```
 
-이 `.apk` 파일을 USB나 카톡으로 폰에 보내서 설치 (안드로이드 설정에서 "출처를 알 수 없는 앱" 허용 필요).
+이 `.apk` 파일을 카톡/USB/메일로 폰에 보내서 설치 (기존 PostureIQ 앱 위에 덮어쓰기로 업데이트됨 — 데이터 손실 없음).
 
-### Android Studio 에서 빌드 (GUI 권장)
+#### 기타 명령
 
-1. Android Studio 실행 → **Open** → `캡스톤/android` 폴더 선택
+```powershell
+npm.cmd run sync          # HTML만 sync (빌드 X)
+npm.cmd run android:open  # Android Studio에서 열기 (GUI 빌드)
+npm.cmd run apk:clean     # 캐시 다 지우고 클린 빌드 (문제 발생 시)
+```
+
+### Android Studio GUI로 빌드 (대안)
+
+1. Android Studio 실행 → **Open** → `C:\Users\user\projects\postureiq\android` 폴더 선택
 2. Gradle sync 자동 시작 (첫 실행 시 의존성 다운로드 ~5분)
-3. 상단 메뉴 **Build → Build App Bundle(s) / APK(s) → Build APK(s)**
-4. 빌드 완료 후 **"locate"** 클릭하면 APK 파일 위치로 이동
-5. 또는 실제 폰을 USB로 연결한 채 ▶️ Run 버튼 → 폰에 바로 설치/실행
+3. 상단 메뉴 **Build → Generate App Bundles or APKs → Generate APKs**
+4. 우하단 알림에서 **"locate"** 클릭 → APK 파일 위치로 이동
+5. 또는 폰을 USB로 연결한 채 ▶️ Run 버튼 → 폰에 바로 설치/실행
 
 ---
 

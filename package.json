@@ -4,10 +4,11 @@
   "description": "PostureIQ Android app — wraps the Spring Boot static UI with Capacitor",
   "private": true,
   "scripts": {
-    "sync": "cap sync",
+    "sync": "cap sync android",
     "android:open": "cap open android",
     "android:run": "cap run android",
-    "android:build": "cd android && gradlew assembleDebug"
+    "apk": "cap sync android && cd android && gradlew assembleDebug",
+    "apk:clean": "cd android && gradlew clean && cd .. && cap sync android && cd android && gradlew assembleDebug"
   },
   "dependencies": {
     "@capacitor/android": "^7.0.0",
