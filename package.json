@@ -1,0 +1,19 @@
+{
+  "name": "postureiq-mobile",
+  "version": "0.0.1",
+  "description": "PostureIQ Android app — wraps the Spring Boot static UI with Capacitor",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync",
+    "android:open": "cap open android",
+    "android:run": "cap run android",
+    "android:build": "cd android && gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0"
+  }
+}
