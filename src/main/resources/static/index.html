@@ -15,164 +15,121 @@
 </head>
 <body>
 
-<!-- iOS Translucent Top Bar -->
+<!-- Minimal iOS Top Bar — just profile -->
 <header class="ios-nav-bar fixed top-0 left-0 right-0 z-50 pt-safe">
-  <div class="flex justify-between items-center px-5 h-12">
-    <span class="ios-footnote" style="color: var(--ios-label-secondary);">2026년 5월 13일 화요일</span>
+  <div class="flex justify-end items-center px-5 h-11">
     <button class="w-8 h-8 rounded-full overflow-hidden ios-tap-spring">
       <img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjqNPvkaWX8bDMST_3hIZm0a19hQjA1E9gh6594QGtvditsyHgK-sNBBpfaYiukHzO6l3UT5nFPz2rOrydSpT40G00rhqkpIsSRc3cgdMyPSBZjBz1r5fjwDCmfxuQLxfKZ7pyuHQOOXhNzGBkzj3coet5_2Tk46Ql0vV1KwfluQsC6Rlk63MjJt-ip235maQFqQctd0voFkee7dU-EX2YLwOAzQkLwBzNSR8QUWhgfMInwnvCu8IXSim2VVfVK6mMs7WZE9A9fQS-"/>
     </button>
   </div>
 </header>
 
-<main class="pt-16 px-5 max-w-md mx-auto">
+<main class="pt-14 px-5 max-w-md mx-auto">
 
-  <!-- Large Title (iOS pattern) -->
-  <section class="pt-3 pb-5">
-    <h1 class="ios-large-title">대시보드</h1>
-    <p class="ios-subheadline mt-1" style="color: var(--ios-label-secondary);">안녕하세요, 민수님 👋</p>
+  <!-- Large Title -->
+  <section class="pt-4 pb-6">
+    <p class="ios-footnote" style="color: var(--ios-label-secondary);">민수님</p>
+    <h1 class="ios-large-title mt-0.5">대시보드</h1>
   </section>
 
-  <!-- Hero: Balance Card (iOS Health-style) -->
-  <section class="ios-card p-5 mb-3">
-    <div class="flex justify-between items-start mb-4">
-      <div>
-        <p class="ios-footnote font-semibold uppercase" style="color: var(--ios-label-secondary); letter-spacing: 0.04em;">자세 균형</p>
-        <p class="ios-title-1 mt-1">균형 잡힘</p>
-      </div>
-      <span class="flex items-center gap-1 ios-caption-2 font-semibold px-2 py-1 rounded-full" style="background: rgba(52, 199, 89, 0.12); color: var(--ios-green);">
-        <span class="w-1.5 h-1.5 rounded-full inline-block" style="background: var(--ios-green);"></span>
+  <!-- Hero: Balance -->
+  <section class="ios-card p-5 mb-4">
+    <div class="flex justify-between items-baseline mb-5">
+      <h2 class="ios-title-2">균형 잡힘</h2>
+      <span class="flex items-center gap-1.5 ios-footnote" style="color: var(--ios-label-secondary);">
+        <span class="w-1.5 h-1.5 rounded-full inline-block" style="background: var(--ios-blue);"></span>
         실시간
       </span>
     </div>
-    <!-- Split bar -->
-    <div class="relative h-2 rounded-full overflow-hidden flex" style="background: var(--ios-fill-tertiary);">
-      <div class="h-full rounded-l-full" style="width: 48%; background: var(--ios-blue);"></div>
-      <div class="w-px h-full bg-white/80"></div>
-      <div class="h-full rounded-r-full flex-1" style="background: var(--ios-green);"></div>
+    <div class="relative h-1.5 rounded-full overflow-hidden" style="background: var(--ios-fill-tertiary);">
+      <div class="absolute left-0 top-0 h-full rounded-full" style="width: 48%; background: var(--ios-blue);"></div>
     </div>
-    <div class="flex justify-between mt-3 ios-footnote" style="color: var(--ios-label-secondary);">
-      <span><span class="font-semibold" style="color: var(--ios-blue);">48%</span> 왼발</span>
-      <span><span class="font-semibold" style="color: var(--ios-green);">52%</span> 오른발</span>
+    <div class="flex justify-between mt-3 ios-footnote">
+      <span style="color: var(--ios-label);"><span class="font-semibold">48%</span> <span style="color: var(--ios-label-tertiary);">왼발</span></span>
+      <span style="color: var(--ios-label);"><span class="font-semibold">52%</span> <span style="color: var(--ios-label-tertiary);">오른발</span></span>
     </div>
   </section>
 
-  <!-- Imbalance alert (iOS-style banner) -->
-  <section class="ios-card mb-3 p-4 flex items-center gap-3" style="background: rgba(255, 149, 0, 0.08);">
-    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background: var(--ios-orange);">
-      <span class="material-symbols-outlined ios-icon-fill text-white text-[22px]">warning</span>
-    </div>
+  <!-- Alert (subtle, list-row style) -->
+  <a href="/live.html" class="ios-card mb-4 px-5 py-4 flex items-center gap-3">
+    <span class="material-symbols-outlined ios-icon" style="color: var(--ios-orange); font-size: 20px;">error</span>
     <div class="flex-1 min-w-0">
-      <p class="ios-headline" style="color: var(--ios-orange);">불균형 감지</p>
-      <p class="ios-footnote" style="color: var(--ios-label-secondary);">오른쪽 쏠림이 15분간 지속됨</p>
+      <p class="ios-body font-semibold">불균형 감지</p>
+      <p class="ios-footnote mt-0.5" style="color: var(--ios-label-secondary);">오른쪽 쏠림이 15분간 지속됨</p>
     </div>
-    <span class="material-symbols-outlined ios-icon" style="color: var(--ios-label-tertiary);">chevron_right</span>
-  </section>
+    <span class="material-symbols-outlined ios-icon" style="color: var(--ios-label-quaternary); font-size: 18px;">chevron_right</span>
+  </a>
 
-  <!-- 2x2 Activity grid (iOS Health rings inspired) -->
-  <div class="grid grid-cols-2 gap-3 mb-3">
-
-    <!-- Steps -->
+  <!-- Stats grid (minimal) -->
+  <div class="grid grid-cols-2 gap-3 mb-4">
     <div class="ios-card p-4">
-      <div class="flex items-center gap-1.5 mb-2">
-        <span class="material-symbols-outlined ios-icon-fill" style="color: var(--ios-orange); font-size: 18px;">directions_walk</span>
-        <span class="ios-caption-2 font-semibold uppercase" style="color: var(--ios-orange); letter-spacing: 0.04em;">걸음 수</span>
-      </div>
-      <div class="flex items-baseline gap-1">
-        <span class="ios-title-1">8,432</span>
-        <span class="ios-footnote" style="color: var(--ios-label-secondary);">걸음</span>
-      </div>
-      <div class="relative h-1 rounded-full mt-3 overflow-hidden" style="background: var(--ios-fill-tertiary);">
-        <div class="absolute left-0 top-0 h-full rounded-full" style="width: 84%; background: var(--ios-orange);"></div>
-      </div>
-      <p class="ios-caption-1 mt-1.5" style="color: var(--ios-label-tertiary);">목표 10,000</p>
+      <p class="ios-footnote" style="color: var(--ios-label-secondary);">걸음 수</p>
+      <p class="ios-title-1 mt-1">8,432</p>
     </div>
-
-    <!-- Active time -->
     <div class="ios-card p-4">
-      <div class="flex items-center gap-1.5 mb-2">
-        <span class="material-symbols-outlined ios-icon-fill" style="color: var(--ios-green); font-size: 18px;">timer</span>
-        <span class="ios-caption-2 font-semibold uppercase" style="color: var(--ios-green); letter-spacing: 0.04em;">활동 시간</span>
-      </div>
-      <div class="flex items-baseline gap-1">
-        <span class="ios-title-1">42</span>
-        <span class="ios-footnote" style="color: var(--ios-label-secondary);">분</span>
-      </div>
-      <div class="relative h-1 rounded-full mt-3 overflow-hidden" style="background: var(--ios-fill-tertiary);">
-        <div class="absolute left-0 top-0 h-full rounded-full" style="width: 70%; background: var(--ios-green);"></div>
-      </div>
-      <p class="ios-caption-1 mt-1.5" style="color: var(--ios-label-tertiary);">목표 60분</p>
+      <p class="ios-footnote" style="color: var(--ios-label-secondary);">활동 시간</p>
+      <p class="ios-title-1 mt-1">42<span class="ios-headline ml-0.5" style="color: var(--ios-label-tertiary);">분</span></p>
     </div>
-
   </div>
 
-  <!-- Heatmap card -->
-  <section class="ios-card p-5 mb-3">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="ios-headline">발바닥 압력 분포</h2>
-      <a href="/analysis.html" class="ios-footnote font-semibold" style="color: var(--ios-blue);">자세히 →</a>
-    </div>
-    <div class="flex justify-around items-center h-44 rounded-xl relative overflow-hidden" style="background: var(--ios-fill-quaternary);">
-      <div class="relative w-20 h-40 rounded-[40%_40%_30%_30%] border border-black/[0.04] overflow-hidden" style="background: white;">
-        <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 25%, rgba(0,122,255,0.55) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(0,122,255,0.35) 0%, transparent 55%);"></div>
-        <span class="absolute bottom-1 left-1/2 -translate-x-1/2 ios-caption-2 font-semibold" style="color: var(--ios-blue);">L</span>
+  <!-- Heatmap card (minimal) -->
+  <section class="ios-card p-5 mb-4">
+    <h2 class="ios-headline mb-4">발바닥 압력</h2>
+    <div class="flex justify-around items-center h-40">
+      <div class="relative w-16 h-36 rounded-[40%_40%_30%_30%] overflow-hidden" style="background: var(--ios-fill-tertiary);">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 30%, rgba(0,122,255,0.45) 0%, transparent 55%), radial-gradient(circle at 50% 78%, rgba(0,122,255,0.30) 0%, transparent 60%);"></div>
       </div>
-      <div class="relative w-20 h-40 rounded-[40%_40%_30%_30%] border border-black/[0.04] overflow-hidden" style="background: white;">
-        <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 20%, rgba(52,199,89,0.55) 0%, transparent 50%), radial-gradient(circle at 50% 75%, rgba(255,59,48,0.45) 0%, transparent 55%);"></div>
-        <span class="absolute bottom-1 left-1/2 -translate-x-1/2 ios-caption-2 font-semibold" style="color: var(--ios-green);">R</span>
+      <div class="relative w-16 h-36 rounded-[40%_40%_30%_30%] overflow-hidden" style="background: var(--ios-fill-tertiary);">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 25%, rgba(0,122,255,0.50) 0%, transparent 55%), radial-gradient(circle at 50% 75%, rgba(0,122,255,0.55) 0%, transparent 60%);"></div>
       </div>
     </div>
-  </section>
-
-  <!-- Weekly Progress (iOS-style chart) -->
-  <section class="ios-card p-5 mb-3">
-    <div class="flex justify-between items-center mb-1">
-      <h2 class="ios-headline">주간 자세 안정도</h2>
-    </div>
-    <p class="ios-footnote mb-4" style="color: var(--ios-label-secondary);">평균 <span class="ios-headline" style="color: var(--ios-blue);">75</span> &nbsp; <span class="ios-caption-1" style="color: var(--ios-label-tertiary);">지난주 +8%</span></p>
-    <div class="flex justify-between items-end gap-2 h-28">
-      <div class="flex flex-col items-center gap-1.5 flex-1">
-        <div class="w-full rounded-t-md" style="height: 60%; background: var(--ios-fill);"></div>
-        <span class="ios-caption-2" style="color: var(--ios-label-tertiary);">월</span>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 flex-1">
-        <div class="w-full rounded-t-md" style="height: 85%; background: var(--ios-fill);"></div>
-        <span class="ios-caption-2" style="color: var(--ios-label-tertiary);">화</span>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 flex-1">
-        <div class="w-full rounded-t-md" style="height: 40%; background: var(--ios-fill);"></div>
-        <span class="ios-caption-2" style="color: var(--ios-label-tertiary);">수</span>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 flex-1">
-        <div class="w-full rounded-t-md" style="height: 95%; background: var(--ios-blue);"></div>
-        <span class="ios-caption-2 font-semibold" style="color: var(--ios-blue);">오늘</span>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 flex-1 opacity-30">
-        <div class="w-full h-24 rounded-t-md" style="background: var(--ios-fill);"></div>
-        <span class="ios-caption-2" style="color: var(--ios-label-tertiary);">금</span>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 flex-1 opacity-30">
-        <div class="w-full h-24 rounded-t-md" style="background: var(--ios-fill);"></div>
-        <span class="ios-caption-2" style="color: var(--ios-label-tertiary);">토</span>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 flex-1 opacity-30">
-        <div class="w-full h-24 rounded-t-md" style="background: var(--ios-fill);"></div>
-        <span class="ios-caption-2" style="color: var(--ios-label-tertiary);">일</span>
-      </div>
+    <div class="flex justify-around mt-2 ios-caption-2" style="color: var(--ios-label-tertiary); letter-spacing: 0.06em;">
+      <span>왼발</span>
+      <span>오른발</span>
     </div>
   </section>
 
-  <!-- Action buttons -->
-  <div class="grid grid-cols-2 gap-3 mb-3">
-    <a href="/analysis.html" class="ios-btn-filled flex items-center justify-center gap-1.5">
-      <span class="material-symbols-outlined ios-icon-fill" style="font-size: 18px;">analytics</span>
-      종합 분석
-    </a>
-    <a href="/reports.html" class="ios-btn-tinted flex items-center justify-center gap-1.5">
-      리포트
-      <span class="material-symbols-outlined ios-icon" style="font-size: 18px;">arrow_forward</span>
-    </a>
-  </div>
+  <!-- Weekly chart (minimal) -->
+  <section class="ios-card p-5 mb-4">
+    <h2 class="ios-headline mb-4">주간 안정도</h2>
+    <div class="flex justify-between items-end gap-2 h-24 mb-2">
+      <div class="flex flex-col items-center gap-2 flex-1">
+        <div class="w-full rounded-sm" style="height: 60%; background: var(--ios-fill);"></div>
+      </div>
+      <div class="flex flex-col items-center gap-2 flex-1">
+        <div class="w-full rounded-sm" style="height: 85%; background: var(--ios-fill);"></div>
+      </div>
+      <div class="flex flex-col items-center gap-2 flex-1">
+        <div class="w-full rounded-sm" style="height: 40%; background: var(--ios-fill);"></div>
+      </div>
+      <div class="flex flex-col items-center gap-2 flex-1">
+        <div class="w-full rounded-sm" style="height: 95%; background: var(--ios-blue);"></div>
+      </div>
+      <div class="flex flex-col items-center gap-2 flex-1 opacity-25">
+        <div class="w-full h-20 rounded-sm" style="background: var(--ios-fill);"></div>
+      </div>
+      <div class="flex flex-col items-center gap-2 flex-1 opacity-25">
+        <div class="w-full h-20 rounded-sm" style="background: var(--ios-fill);"></div>
+      </div>
+      <div class="flex flex-col items-center gap-2 flex-1 opacity-25">
+        <div class="w-full h-20 rounded-sm" style="background: var(--ios-fill);"></div>
+      </div>
+    </div>
+    <div class="flex justify-between ios-caption-2" style="color: var(--ios-label-tertiary);">
+      <span class="flex-1 text-center">월</span>
+      <span class="flex-1 text-center">화</span>
+      <span class="flex-1 text-center">수</span>
+      <span class="flex-1 text-center font-semibold" style="color: var(--ios-blue);">오늘</span>
+      <span class="flex-1 text-center opacity-50">금</span>
+      <span class="flex-1 text-center opacity-50">토</span>
+      <span class="flex-1 text-center opacity-50">일</span>
+    </div>
+  </section>
+
+  <!-- Single primary action -->
+  <a href="/analysis.html" class="ios-btn-filled flex items-center justify-center gap-1.5 mb-3">
+    종합 분석 보기
+  </a>
 
 </main>
 
